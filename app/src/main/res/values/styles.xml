@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -8,9 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- Splash Screen theme. -->
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="ListaAcougues" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/titulo_activity</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="android:statusBarColor">@android:color/black</item>
     </style>
 
+    <style name="SplashTheme" parent="android:Theme.Material.NoActionBar.Fullscreen">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/titulo_activity</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 
+    <style name="TextAppearance.ActionBar" parent="@android:style/TextAppearance">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 </resources>
