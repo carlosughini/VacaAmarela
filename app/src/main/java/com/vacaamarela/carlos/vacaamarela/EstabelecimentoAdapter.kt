@@ -1,17 +1,13 @@
 package com.vacaamarela.carlos.vacaamarela
 
 import android.content.Context
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.TextView
-import kotlinx.android.synthetic.main.list_item.view.*
 
-class EstabelecimentoAdapter(private val context: Context, private val dataSource: ArrayList<Estabelecimento>) : BaseAdapter() {
+class EstabelecimentoAdapter(private val context: Context, private val dataSource: ArrayList<Butchery>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
