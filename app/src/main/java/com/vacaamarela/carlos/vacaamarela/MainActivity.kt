@@ -2,7 +2,6 @@ package com.vacaamarela.carlos.vacaamarela
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -16,7 +15,6 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.ListView
-import android.widget.ProgressBar
 import com.github.lzyzsd.circleprogress.DonutProgress
 import org.json.JSONException
 import org.json.JSONObject
@@ -37,6 +35,10 @@ class MainActivity : AppCompatActivity() {
     // Instantiate progress bar
     var progressBar: DonutProgress? = null
 
+    /** URL for the butchers data from the google spreadsheet */
+    private val SPREADSHEET_URL: String = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1yr5mwaIbA9puTIUfMnrfoKeovZ3rpuCpqIIqOsSZtEs"
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -49,16 +51,17 @@ class MainActivity : AppCompatActivity() {
         // Change actionBar title
         actionBar!!.title = "Açougues"
 
-        // Call asynctask to get butchers data from google spreadsheet
+        /**
+         * Create a {@link AsyncTask} to perform the HTTP request to the given URL
+         * on a background thread. When the result is received on the main UI thread,
+         * then update the UI.
+         * Get the butchers data from google spreadsheet.
+         */
         val asyncTask: ButcheryAsyncTask = ButcheryAsyncTask()
-        asyncTask.execute()
+        asyncTask.execute(SPREADSHEET_URL)
 
         // Get the user location in latitude and longitude
         getLocation()
-
-        val locationAddress: GeocodingLocation = GeocodingLocation()
-        locationAddress.getAddressFromLocation(address,
-                applicationContext, GeocoderHandler())
     }
 
     /**
@@ -87,26 +90,36 @@ class MainActivity : AppCompatActivity() {
      * update the UI with the first earthquake in the response.
      */
     @SuppressLint("StaticFieldLeak")
-    inner class ButcheryAsyncTask : AsyncTask<URL, Void, ArrayList<Butchery>>() {
+    private inner class ButcheryAsyncTask : AsyncTask<String, Int, ArrayList<Butchery>>() {
 
         override fun onPreExecute() {
             super.onPreExecute()
             progressBar?.visibility = View.VISIBLE
         }
 
-        override fun doInBackground(vararg urls: URL): ArrayList<Butchery>? {
+        override fun doInBackground(vararg urls: String): ArrayList<Butchery>? {
+
+            // Do not execute the task if the URL is null
+            if (urls[0].isEmpty()) {
+                return null
+            }
+
+            publishProgress(10)
             // Create URL object
-            val url = createUrl("https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1yr5mwaIbA9puTIUfMnrfoKeovZ3rpuCpqIIqOsSZtEs")
+            val url = createUrl(urls[0])
 
             // Perform HTTP request to the URL and receive a JSON response back
             var jsonResponse = ""
             try {
+                publishProgress(40)
                 jsonResponse = makeHttpRequest(url)
+                publishProgress(70)
             } catch (e: IOException) {
                 // TODO Handle the IOException
             }
 
             // Extract relevant fields from the JSON response and create an {@link Event} object
+            publishProgress(100)
 
             // Return the {@link Event} object as the result fo the {@link TsunamiAsyncTask}
             return extractFeatureFromJson(jsonResponse)
