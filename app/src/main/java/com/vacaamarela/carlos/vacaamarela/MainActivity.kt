@@ -2,6 +2,7 @@ package com.vacaamarela.carlos.vacaamarela
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -14,6 +15,7 @@ import android.support.v4.content.ContextCompat
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ListView
 import com.github.lzyzsd.circleprogress.DonutProgress
 import org.json.JSONException
@@ -82,6 +84,13 @@ class MainActivity : AppCompatActivity() {
          * listView will display list items for each Butchery in the list
          */
         listView.adapter = butcheryAdapter
+
+        listView.onItemClickListener = object : AdapterView.OnItemClickListener {
+            override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                var butcheryDetailActivity = Intent(applicationContext,ButcheryDetailActivity::class.java)
+                startActivity(butcheryDetailActivity)
+            }
+        }
     }
 
 
