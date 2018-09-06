@@ -26,4 +26,16 @@
         <item name="android:textSize">30dp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
+
+    <style name="CategoryTab" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/titulo_activity</item>
+        <item name="tabSelectedTextColor">@color/titulo_activity</item>
+        <item name="tabTextAppearance">@style/CategoryTabTextAppearance</item>
+    </style>
+
+    <!-- Aparência do estilo do texto para uma categoria de aba -->
+    <style name="CategoryTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">#A8A19E</item>
+        <item name="android:textSize">10sp</item>
+    </style>
 </resources>

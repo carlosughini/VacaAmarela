@@ -5,6 +5,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_meat">Carnes</string>
     <string name="fragment_opinion">Opinião</string>
-    <string name="fragment_map">Como chegar</string>
+    <string name="fragment_map">Mapa</string>
     <string name="fragment_promocoes">Promoções</string>
 </resources>
