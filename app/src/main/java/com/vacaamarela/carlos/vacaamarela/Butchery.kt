@@ -17,14 +17,26 @@ class Butchery : Serializable {
     /** Distance of the butchery from the user */
     var mDistanceFromTheUser: String? = null
 
+    /** Butchery latitude */
+    var mLatitude: String? = null
+
+    /** Butchery longitude */
+    var mLongitude: String? = null
+
+    /** Butchery longitude */
+    var mPhoneNumber: String? = null
+
     /** Image resource ID for the butchery */
 //    var mButcheryLogoResourceId: Int,
 
-    constructor(butcheryName: String, butcheryAddress: String, butcheryCity: String) {
+    constructor(butcheryName: String, butcheryAddress: String, butcheryCity: String, latitude: String, longitude: String, phoneNumber: String) {
         //mDistanceFromTheUser = distanceFromTheUser
         mButcheryName = butcheryName
         mButcheryAddress = butcheryAddress
         mButcheryCity = butcheryCity
+        mLatitude = latitude
+        mLongitude = longitude
+        mPhoneNumber = phoneNumber
     }
 }
 

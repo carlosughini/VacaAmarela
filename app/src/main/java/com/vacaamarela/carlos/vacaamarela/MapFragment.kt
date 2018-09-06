@@ -18,9 +18,9 @@ import kotlinx.android.synthetic.*
  */
 class MapFragment : Fragment(), OnMapReadyCallback  {
 
-    var mGoogleMap: GoogleMap? = null
-    var mMapView: MapView? = null
-    var mView: View? = null
+    private var mGoogleMap: GoogleMap? = null
+    private var mMapView: MapView? = null
+    private var mView: View? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,10 +46,11 @@ class MapFragment : Fragment(), OnMapReadyCallback  {
 
         mGoogleMap = googleMap
 
-        val sydney = LatLng(-34.0, 151.0)
+        val sydney = LatLng(-30.0205258, -51.2030004)
         mGoogleMap!!.addMarker(MarkerOptions().position(sydney))
         mGoogleMap!!.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        mGoogleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15.0F))
+        mGoogleMap!!.mapType = GoogleMap.MAP_TYPE_NORMAL
+        mGoogleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 18.0F))
 
     }
 }

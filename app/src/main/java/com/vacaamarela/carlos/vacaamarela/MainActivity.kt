@@ -250,14 +250,22 @@ class MainActivity : AppCompatActivity() {
                     for (i in 0 until sheetArray.length()) {
                         // Extract out the jsonObjects in each position
                         val butchers = sheetArray.getJSONObject(i)
-                        // Extract out the name, address and city of the butchers
+                        // Extract out the butchery name
                         val butcheryName = butchers.getString("Nome")
+                        // Extract out the butchery address
                         val butcheryAddress = butchers.getString("Endereco")
+                        // Extract out the butchery city
                         val butcheryCity = butchers.getString("Cidade")
+                        // Extract out the butchery latitude
+                        val butcheryLatitude = butchers.getString("Latitude")
+                        // Extract out the butchery longitude
+                        val butcheryLongitude = butchers.getString("Longitude")
+                        // Extract out the butchery phone number
+                        val butcheryPhoneNumber = butchers.getString("Telefone")
                         /**
                          * Create a new {@link Butchery} object
                          */
-                        butchersList.add(Butchery(butcheryName, butcheryAddress, butcheryCity))
+                        butchersList.add(Butchery(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude, butcheryLongitude, butcheryPhoneNumber))
                     }
                 }
             } catch (e: JSONException) {

@@ -9,8 +9,6 @@ class ButcheryPagerAdapter : FragmentPagerAdapter {
 
     var mContext: Context
 
-    var tabTitles = listOf("Promoções","Carnes","Como chegar", "Opiniões")
-
     constructor(context: Context, fm: FragmentManager) : super(fm) {
         mContext = context
     }
