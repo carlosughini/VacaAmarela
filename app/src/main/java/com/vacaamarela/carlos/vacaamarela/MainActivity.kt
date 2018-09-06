@@ -18,7 +18,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.ProgressBar
-import com.github.lzyzsd.circleprogress.DonutProgress
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -40,6 +39,9 @@ class MainActivity : AppCompatActivity() {
 
     /** URL for the butchers data from the google spreadsheet */
     private val SPREADSHEET_URL: String = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1yr5mwaIbA9puTIUfMnrfoKeovZ3rpuCpqIIqOsSZtEs"
+
+    /** Value to pass Butchery Object to ButcheryDetailActivity */
+    val BUTCHERY: String = "Butchery"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         listView.onItemClickListener = object : AdapterView.OnItemClickListener {
             override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val butcheryDetailActivity = Intent(applicationContext,ButcheryDetailActivity::class.java)
-                Log.v(TAG,"Position: $position")
+                butcheryDetailActivity.putExtra(BUTCHERY,butchers[position])
                 startActivity(butcheryDetailActivity)
             }
         }

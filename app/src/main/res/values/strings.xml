@@ -6,4 +6,5 @@
     <string name="fragment_opinion">Opinião</string>
     <string name="fragment_map">Mapa</string>
     <string name="fragment_promocoes">Promoções</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

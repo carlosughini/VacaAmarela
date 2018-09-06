@@ -1,8 +1,9 @@
 package com.vacaamarela.carlos.vacaamarela
 
 import android.support.v7.app.AppCompatActivity
+import java.io.Serializable
 
-class Butchery {
+class Butchery : Serializable {
 
     /** Butchery name */
     var mButcheryName: String? = null

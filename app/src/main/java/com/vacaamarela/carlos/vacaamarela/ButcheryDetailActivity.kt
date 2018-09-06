@@ -4,12 +4,21 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
+import java.util.*
 
 class ButcheryDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.butchery_view_pager)
+
+        // Get the butchery object passed by intent extras
+        val butchery = intent.extras.get("Butchery") as Butchery
+
+        // Get the actionBar
+        val actionBar = supportActionBar
+        // Change actionBar title
+        actionBar!!.title = butchery.mButcheryName
 
         // Find the view pager
         val viewPager = findViewById<ViewPager>(R.id.butchery_viewPager)

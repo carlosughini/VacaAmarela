@@ -5,13 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".MapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Mostrar mapa" />
+        android:layout_height="match_parent">
 
-
+    </com.google.android.gms.maps.MapView>
 
 </FrameLayout>
