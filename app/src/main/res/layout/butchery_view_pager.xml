@@ -9,7 +9,9 @@
     <ImageView
         android:id="@+id/butchery_image"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:src="@drawable/barbecue2"
+        android:scaleType="centerCrop"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/butchery_tabLayout"

@@ -17,6 +17,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
+import android.widget.ProgressBar
 import com.github.lzyzsd.circleprogress.DonutProgress
 import org.json.JSONException
 import org.json.JSONObject
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     val TAG = MainActivity::class.java.simpleName
 
     // Instantiate progress bar
-    var progressBar: DonutProgress? = null
+    var progressBar: ProgressBar? = null
 
     /** URL for the butchers data from the google spreadsheet */
     private val SPREADSHEET_URL: String = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1yr5mwaIbA9puTIUfMnrfoKeovZ3rpuCpqIIqOsSZtEs"
@@ -87,7 +88,8 @@ class MainActivity : AppCompatActivity() {
 
         listView.onItemClickListener = object : AdapterView.OnItemClickListener {
             override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                var butcheryDetailActivity = Intent(applicationContext,ButcheryDetailActivity::class.java)
+                val butcheryDetailActivity = Intent(applicationContext,ButcheryDetailActivity::class.java)
+                Log.v(TAG,"Position: $position")
                 startActivity(butcheryDetailActivity)
             }
         }
@@ -113,7 +115,6 @@ class MainActivity : AppCompatActivity() {
                 return null
             }
 
-            publishProgress(10)
             // Create URL object
             val url = createUrl(urls[0])
 
@@ -127,11 +128,13 @@ class MainActivity : AppCompatActivity() {
                 // TODO Handle the IOException
             }
 
-            // Extract relevant fields from the JSON response and create an {@link Event} object
-            publishProgress(100)
-
             // Return the {@link Event} object as the result fo the {@link TsunamiAsyncTask}
             return extractFeatureFromJson(jsonResponse)
+        }
+
+        override fun onProgressUpdate(vararg values: Int?) {
+            super.onProgressUpdate(*values)
+
         }
 
         /**

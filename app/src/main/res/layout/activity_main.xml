@@ -17,13 +17,12 @@
         android:minHeight="20dp"
         android:dividerHeight="20.0dp"/>
 
-    <com.github.lzyzsd.circleprogress.DonutProgress
+    <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:donut_inner_bottom_text_color="@color/amarelo_nome_acougue"
-        app:donut_text_color="@color/amarelo_nome_acougue"
+        android:indeterminateDrawable="@drawable/progressbar"
         android:visibility="invisible"/>
 
 </RelativeLayout>
