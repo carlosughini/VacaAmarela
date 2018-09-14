@@ -18,7 +18,9 @@ class ButcheryDetailActivity : AppCompatActivity() {
         // Get the actionBar
         val actionBar = supportActionBar
         // Change actionBar title
-        actionBar!!.title = butchery.mButcheryName
+        actionBar?.title = butchery.mButcheryName
+        // Get a support ActionBar corresponding to this toolbar and enable the Up button
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Find the view pager
         val viewPager = findViewById<ViewPager>(R.id.butchery_viewPager)
