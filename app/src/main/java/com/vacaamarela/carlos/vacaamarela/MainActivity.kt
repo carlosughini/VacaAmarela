@@ -134,11 +134,6 @@ class MainActivity : AppCompatActivity() {
             return extractFeatureFromJson(jsonResponse)
         }
 
-        override fun onProgressUpdate(vararg values: Int?) {
-            super.onProgressUpdate(*values)
-
-        }
-
         /**
          * Update the screen with the given earthquake (which was the result of the
          * [TsunamiAsyncTask]).
