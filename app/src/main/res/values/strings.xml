@@ -2,9 +2,7 @@
     <string name="app_name">Vaca Amarela</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="fragment_meat">Carnes</string>
-    <string name="fragment_opinion">Opinião</string>
     <string name="fragment_map">Mapa</string>
-    <string name="fragment_promocoes">Promoções</string>
+    <string name="fragment_promocoes">Cupons</string>
     <string name="title_activity_maps">Map</string>
 </resources>
