@@ -16,9 +16,7 @@ class ButcheryPagerAdapter : FragmentPagerAdapter {
     override fun getItem(position: Int): Fragment? {
         return when (position) {
             0 -> PromotionsFragment()
-            1 -> MeatFragment()
-            2 -> MapFragment()
-            3 -> OpinionFragment()
+            1 -> MapFragment()
             else -> {
                 null
             }
@@ -28,9 +26,7 @@ class ButcheryPagerAdapter : FragmentPagerAdapter {
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
             0 -> mContext.getString(R.string.fragment_promocoes)
-            1 -> mContext.getString(R.string.fragment_meat)
             2 -> mContext.getString(R.string.fragment_map)
-            3 -> mContext.getString(R.string.fragment_opinion)
             else -> {
                 null
             }
