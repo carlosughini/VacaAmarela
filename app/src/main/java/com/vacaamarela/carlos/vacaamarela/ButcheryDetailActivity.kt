@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
-import java.util.*
+import com.vacaamarela.carlos.vacaamarela.ui.adapter.ButcheryPagerAdapter
 
 class ButcheryDetailActivity : AppCompatActivity() {
 
@@ -26,7 +26,7 @@ class ButcheryDetailActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager>(R.id.butchery_viewPager)
 
         // Create one adapter to know which fragment should show on each page
-        val butcheryAdapter: ButcheryPagerAdapter = ButcheryPagerAdapter(this,supportFragmentManager);
+        val butcheryAdapter: ButcheryPagerAdapter = ButcheryPagerAdapter(this, supportFragmentManager);
 
         // Set adapter on view pager
         viewPager.adapter = butcheryAdapter

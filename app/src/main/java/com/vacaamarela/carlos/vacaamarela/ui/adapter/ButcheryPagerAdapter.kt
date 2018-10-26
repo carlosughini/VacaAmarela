@@ -1,9 +1,12 @@
-package com.vacaamarela.carlos.vacaamarela
+package com.vacaamarela.carlos.vacaamarela.ui.adapter
 
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.vacaamarela.carlos.vacaamarela.MapFragment
+import com.vacaamarela.carlos.vacaamarela.PromotionsFragment
+import com.vacaamarela.carlos.vacaamarela.R
 
 class ButcheryPagerAdapter : FragmentPagerAdapter {
 

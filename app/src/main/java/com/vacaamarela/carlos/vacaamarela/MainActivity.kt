@@ -18,6 +18,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.ProgressBar
+import com.vacaamarela.carlos.vacaamarela.ui.adapter.EstabelecimentoAdapter
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader

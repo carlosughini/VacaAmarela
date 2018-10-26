@@ -1,4 +1,4 @@
-package com.vacaamarela.carlos.vacaamarela
+package com.vacaamarela.carlos.vacaamarela.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.vacaamarela.carlos.vacaamarela.Butchery
+import com.vacaamarela.carlos.vacaamarela.R
 
 class EstabelecimentoAdapter(private val context: Context, private val dataSource: ArrayList<Butchery>) : BaseAdapter() {
 
