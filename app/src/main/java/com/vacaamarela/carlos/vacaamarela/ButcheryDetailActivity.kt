@@ -4,7 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
-import com.vacaamarela.carlos.vacaamarela.ui.adapter.ButcheryPagerAdapter
+import com.vacaamarela.carlos.vacaamarela.model.Acougue
+import com.vacaamarela.carlos.vacaamarela.ui.adapter.HomePagerAdapter
 
 class ButcheryDetailActivity : AppCompatActivity() {
 
@@ -13,12 +14,12 @@ class ButcheryDetailActivity : AppCompatActivity() {
         setContentView(R.layout.butchery_view_pager)
 
         // Get the butchery object passed by intent extras
-        val butchery = intent.extras.get("Butchery") as Butchery
+        val butchery = intent.extras.get("Acougue") as Acougue
 
         // Get the actionBar
         val actionBar = supportActionBar
         // Change actionBar title
-        actionBar?.title = butchery.mButcheryName
+        actionBar?.title = butchery.nome
         // Get a support ActionBar corresponding to this toolbar and enable the Up button
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -26,10 +27,10 @@ class ButcheryDetailActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager>(R.id.butchery_viewPager)
 
         // Create one adapter to know which fragment should show on each page
-        val butcheryAdapter: ButcheryPagerAdapter = ButcheryPagerAdapter(this, supportFragmentManager);
+        val homeAdapter: HomePagerAdapter = HomePagerAdapter(this, supportFragmentManager);
 
         // Set adapter on view pager
-        viewPager.adapter = butcheryAdapter
+        viewPager.adapter = homeAdapter
 
         // Give to the TabLayout the ViewPager
         val tabLayout = findViewById<TabLayout>(R.id.butchery_tabLayout)

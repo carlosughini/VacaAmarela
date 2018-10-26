@@ -18,6 +18,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.ProgressBar
+import com.vacaamarela.carlos.vacaamarela.model.Acougue
 import com.vacaamarela.carlos.vacaamarela.ui.adapter.EstabelecimentoAdapter
 import org.json.JSONException
 import org.json.JSONObject
@@ -41,8 +42,8 @@ class MainActivity : AppCompatActivity() {
     /** URL for the butchers data from the google spreadsheet */
     private val SPREADSHEET_URL: String = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1yr5mwaIbA9puTIUfMnrfoKeovZ3rpuCpqIIqOsSZtEs"
 
-    /** Value to pass Butchery Object to ButcheryDetailActivity */
-    val BUTCHERY: String = "Butchery"
+    /** Value to pass Acougue Object to ButcheryDetailActivity */
+    val BUTCHERY: String = "Acougue"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Update the screen to display information from the given [Event].
      */
-    fun updateUi(butchers: ArrayList<Butchery>) {
+    fun updateUi(butchers: ArrayList<Acougue>) {
         // Find the ListView object in the view hierarchy of the Activity.
         val listView: ListView = findViewById(R.id.listView)
 
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
         /**
          * Make the listView use the butcheryAdapter created above, so that the
-         * listView will display list items for each Butchery in the list
+         * listView will display list items for each Acougue in the list
          */
         listView.adapter = butcheryAdapter
 
@@ -104,14 +105,14 @@ class MainActivity : AppCompatActivity() {
      * update the UI with the first earthquake in the response.
      */
     @SuppressLint("StaticFieldLeak")
-    private inner class ButcheryAsyncTask : AsyncTask<String, Int, ArrayList<Butchery>>() {
+    private inner class ButcheryAsyncTask : AsyncTask<String, Int, ArrayList<Acougue>>() {
 
         override fun onPreExecute() {
             super.onPreExecute()
             progressBar?.visibility = View.VISIBLE
         }
 
-        override fun doInBackground(vararg urls: String): ArrayList<Butchery>? {
+        override fun doInBackground(vararg urls: String): ArrayList<Acougue>? {
 
             // Do not execute the task if the URL is null
             if (urls[0].isEmpty()) {
@@ -139,7 +140,7 @@ class MainActivity : AppCompatActivity() {
          * Update the screen with the given earthquake (which was the result of the
          * [TsunamiAsyncTask]).
          */
-        override fun onPostExecute(butchers: ArrayList<Butchery>?) {
+        override fun onPostExecute(butchers: ArrayList<Acougue>?) {
             // Set the progressbar invisible
             progressBar?.visibility = View.INVISIBLE
 
@@ -226,14 +227,14 @@ class MainActivity : AppCompatActivity() {
          * Return an [Event] object by parsing out information
          * about the first earthquake from the input earthquakeJSON string.
          */
-        private fun extractFeatureFromJson(responseJSON: String): ArrayList<Butchery>? {
+        private fun extractFeatureFromJson(responseJSON: String): ArrayList<Acougue>? {
             // If the JSON string is empty or null, then return early.
             if (TextUtils.isEmpty(responseJSON)) {
                 return null
             }
 
             // Create a list of butchers
-            val butchersList = ArrayList<Butchery>()
+            val butchersList = ArrayList<Acougue>()
 
             try {
                 val baseJsonResponse = JSONObject(responseJSON)
@@ -259,9 +260,9 @@ class MainActivity : AppCompatActivity() {
                         // Extract out the butchery phone number
                         val butcheryPhoneNumber = butchers.getString("Telefone")
                         /**
-                         * Create a new {@link Butchery} object
+                         * Create a new {@link Acougue} object
                          */
-                        butchersList.add(Butchery(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude, butcheryLongitude, butcheryPhoneNumber))
+                        butchersList.add(Acougue(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude, butcheryLongitude, butcheryPhoneNumber))
                     }
                 }
             } catch (e: JSONException) {

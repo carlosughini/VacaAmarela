@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.vacaamarela.carlos.vacaamarela.Butchery
+import com.vacaamarela.carlos.vacaamarela.model.Acougue
 import com.vacaamarela.carlos.vacaamarela.R
 
-class EstabelecimentoAdapter(private val context: Context, private val dataSource: ArrayList<Butchery>) : BaseAdapter() {
+class EstabelecimentoAdapter(private val context: Context, private val dataSource: ArrayList<Acougue>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -31,7 +31,7 @@ class EstabelecimentoAdapter(private val context: Context, private val dataSourc
         // Find the TextView in the list_item.xml layout with the ID butchery_name
         val distanceFromTheUser = listItemView?.findViewById<TextView>(R.id.distance)
 
-        butcheryName!!.text = currentButchery.mButcheryName
+        butcheryName!!.text = currentButchery.nome
 
         distanceFromTheUser!!.text = currentButchery.mDistanceFromTheUser
 

@@ -4,22 +4,18 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.vacaamarela.carlos.vacaamarela.MapFragment
-import com.vacaamarela.carlos.vacaamarela.PromotionsFragment
 import com.vacaamarela.carlos.vacaamarela.R
+import com.vacaamarela.carlos.vacaamarela.ui.view.AcouguesFragment
+import com.vacaamarela.carlos.vacaamarela.ui.view.CuponsFragment
 
-class ButcheryPagerAdapter : FragmentPagerAdapter {
+class HomePagerAdapter(context: Context, fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    var mContext: Context
-
-    constructor(context: Context, fm: FragmentManager) : super(fm) {
-        mContext = context
-    }
+    var mContext: Context = context
 
     override fun getItem(position: Int): Fragment? {
         return when (position) {
-            0 -> PromotionsFragment()
-            1 -> MapFragment()
+            0 -> AcouguesFragment()
+            1 -> CuponsFragment()
             else -> {
                 null
             }
@@ -37,7 +33,7 @@ class ButcheryPagerAdapter : FragmentPagerAdapter {
     }
 
     override fun getCount(): Int {
-        return 4
+        return 2
     }
 
 }
