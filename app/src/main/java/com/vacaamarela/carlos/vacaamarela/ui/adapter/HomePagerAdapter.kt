@@ -24,8 +24,8 @@ class HomePagerAdapter(context: Context, fm: FragmentManager) : FragmentPagerAda
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> mContext.getString(R.string.fragment_promocoes)
-            2 -> mContext.getString(R.string.fragment_map)
+            0 -> "ACOUGUES"
+            1 -> "CUPONS"
             else -> {
                 null
             }
