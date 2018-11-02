@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:minHeight="120dp"
+    android:background="@color/fundo_lista">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="@dimen/card_view_corner_radius"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#E96802">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/butchery_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Nome do açougue"
+                    android:textSize="@dimen/size_list_item_title"
+                    android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                    android:layout_marginTop="@dimen/margin_top_list_item_acougues"
+                    android:textColor="@color/title_acougue_list"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/list_tel_icon"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"/>
+
+                    <TextView
+                        android:id="@+id/telephone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        android:gravity="center"
+                        android:textColor="@color/list_item_text_color"
+                        tools:text="51 3322-3040"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_list_item_acougues">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/list_distance_icon"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"/>
+
+                    <TextView
+                        android:id="@+id/distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        android:gravity="center"
+                        android:textColor="@color/list_item_text_color"
+                        tools:text="0.0 Km" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                    android:layout_marginTop="@dimen/margin_top_list_item_acougues"
+                    android:layout_marginBottom="@dimen/margin_bottom_list_item_acougues"
+                    android:background="@drawable/linear_layout_shape">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/list_cupom_icon"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/list_item_text_color"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        tools:text="10 Cupons"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logolista"
+                    android:layout_margin="@dimen/margin_list_item_logo"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

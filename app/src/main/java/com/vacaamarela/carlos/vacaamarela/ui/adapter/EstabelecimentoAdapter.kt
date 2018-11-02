@@ -20,15 +20,15 @@ class EstabelecimentoAdapter(private val context: Context, private val dataSourc
         var listItemView = convertView
         if (listItemView == null) {
             // Get view for row item
-            listItemView = inflater.inflate(R.layout.list_item, parent, false)
+            listItemView = inflater.inflate(R.layout.acougues_list_item, parent, false)
         }
 
         val currentButchery = dataSource[position]
 
-        // Find the TextView in the list_item.xml layout with the ID butchery_name
+        // Find the TextView in the acougues_list_itemlist_item.xml layout with the ID butchery_name
         val butcheryName = listItemView?.findViewById<TextView>(R.id.butchery_name)
 
-        // Find the TextView in the list_item.xml layout with the ID butchery_name
+        // Find the TextView in the acougues_list_itemlist_item.xml layout with the ID butchery_name
         val distanceFromTheUser = listItemView?.findViewById<TextView>(R.id.distance)
 
         butcheryName!!.text = currentButchery.nome

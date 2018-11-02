@@ -3,8 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="fundo_lista">#B3000000</color>
-    <color name="amarelo_nome_acougue">#FEB913</color>
+    <color name="fundo_lista">#DBDBDB</color>
     <!--<color name="titulo_activity">#FFD600</color>-->
     <color name="color_status">#33FFD600</color>
     <color name="butchery_detail_background">#333333</color>
@@ -14,4 +13,8 @@
     <color name="amarelo_principal">#FFC200</color>
 
     <color name="teste">#32262626</color>
+
+    <color name="title_acougue_list">#333333</color>
+    <color name="list_item_text_color">#474747</color>
+    <color name="list_item_cupom_layout">#80F8FAD2</color>
 </resources>

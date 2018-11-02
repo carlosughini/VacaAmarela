@@ -14,13 +14,7 @@ class HomePagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment? {
         return listOfFragments[position]
-//        return when (position) {
-//            0 -> AcouguesFragment()
-//            1 -> CuponsFragment()
-//            else -> {
-//                null
-//            }
-//        }
+
     }
 
     override fun getCount(): Int {
