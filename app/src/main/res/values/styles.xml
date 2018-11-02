@@ -6,37 +6,38 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlActivated">@color/titulo_activity</item>
-    </style>
-
-    <style name="YellowAccent" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:colorAccent">@color/titulo_activity</item>
+        <item name="colorControlActivated">@color/amarelo_principal</item>
     </style>
 
     <style name="ListaAcougues" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/titulo_activity</item>
-        <item name="colorPrimaryDark">@android:color/black</item>
-        <item name="android:statusBarColor">@android:color/black</item>
-        <item name="colorAccent">@color/titulo_activity</item>
+        <item name="colorPrimary">@color/fundo_app_bar</item>
+        <item name="android:statusBarColor">@color/status_bar</item>
+        <item name="colorAccent">@color/amarelo_principal</item>
     </style>
 
     <style name="SplashTheme" parent="android:Theme.Material.NoActionBar.Fullscreen">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/titulo_activity</item>
+        <item name="colorPrimary">@color/amarelo_principal</item>
         <item name="colorPrimaryDark">@android:color/black</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="TextAppearance.ActionBar" parent="@android:style/TextAppearance">
-        <item name="android:textSize">30dp</item>
-        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/amarelo_principal</item>
     </style>
 
     <style name="CategoryTab" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">@color/titulo_activity</item>
-        <item name="tabSelectedTextColor">@color/titulo_activity</item>
+        <item name="tabIndicatorColor">@color/teste</item>
+        <item name="tabSelectedTextColor">@color/amarelo_principal</item>
         <item name="tabTextAppearance">@style/CategoryTabTextAppearance</item>
+        <item name="tabBackground">@color/amarelo_principal</item>
+        <item name="tabIndicatorHeight">48dp</item>
+        <item name="tabPaddingStart">0dp</item>
+        <item name="tabPaddingEnd">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:scaleType">fitXY</item>
     </style>
 
     <!-- Aparência do estilo do texto para uma categoria de aba -->

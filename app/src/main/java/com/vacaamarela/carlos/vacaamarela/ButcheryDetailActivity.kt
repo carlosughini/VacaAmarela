@@ -27,7 +27,7 @@ class ButcheryDetailActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager>(R.id.butchery_viewPager)
 
         // Create one adapter to know which fragment should show on each page
-        val homeAdapter: HomePagerAdapter = HomePagerAdapter(this, supportFragmentManager);
+        val homeAdapter: HomePagerAdapter = HomePagerAdapter(supportFragmentManager);
 
         // Set adapter on view pager
         viewPager.adapter = homeAdapter

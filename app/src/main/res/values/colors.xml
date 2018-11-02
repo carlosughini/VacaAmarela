@@ -5,7 +5,13 @@
     <color name="colorAccent">#FF4081</color>
     <color name="fundo_lista">#B3000000</color>
     <color name="amarelo_nome_acougue">#FEB913</color>
-    <color name="titulo_activity">#FFD600</color>
+    <!--<color name="titulo_activity">#FFD600</color>-->
     <color name="color_status">#33FFD600</color>
     <color name="butchery_detail_background">#333333</color>
+    <!-- Novo app -->
+    <color name="fundo_app_bar">#262626</color>
+    <color name="status_bar">#141414</color>
+    <color name="amarelo_principal">#FFC200</color>
+
+    <color name="teste">#32262626</color>
 </resources>
