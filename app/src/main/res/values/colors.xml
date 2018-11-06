@@ -3,9 +3,30 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="fundo_lista">#B3000000</color>
-    <color name="amarelo_nome_acougue">#FEB913</color>
-    <color name="titulo_activity">#FFD600</color>
+    <color name="fundo_lista">#DBDBDB</color>
+    <!--<color name="titulo_activity">#FFD600</color>-->
     <color name="color_status">#33FFD600</color>
     <color name="butchery_detail_background">#333333</color>
+
+    <!-- Novo app -->
+    <color name="status_bar">#141414</color>
+
+    <color name="tab_bar_background">#32262626</color>
+
+    <!--App main yellow color-->
+    <color name="main_yellow">#FFC200</color>
+    <!--App bar background color-->
+    <color name="app_bar_background">#262626</color>
+    <!--Butchery list title-->
+    <color name="butchery_list_title">#333333</color>
+    <color name="list_item_text_color">#474747</color>
+    <color name="list_item_cupom_layout">#80F8FAD2</color>
+    <!--Color for the first position-->
+    <color name="list_item_1_background">#E96802</color>
+    <!--Color for the second position-->
+    <color name="list_item_2_background">#FE9C21</color>
+    <!--Color for the third position-->
+    <color name="list_item_3_background">#9EC3BC</color>
+    <!--Color for the fourth position-->
+    <color name="list_item_4_background">#BABABA</color>
 </resources>

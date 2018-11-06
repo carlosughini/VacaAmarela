@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_left_list_item_acougues">8dp</dimen>
+    <dimen name="margin_top_list_item_acougues">8dp</dimen>
+    <dimen name="margin_bottom_list_item_acougues">8dp</dimen>
+    <dimen name="size_list_item_title">18sp</dimen>
+    <dimen name="card_view_corner_radius">6dp</dimen>
+    <dimen name="card_view_elevation">4dp</dimen>
+    <dimen name="list_item_cupom_layout_radius">4dp</dimen>
+    <dimen name="margin_list_item_logo">8dp</dimen>
+    <dimen name="toolbar_bar_elevation">4dp</dimen>
+    <dimen name="tab_bar_elevation">4dp</dimen>
+    <dimen name="tab_layout_height">48dp</dimen>
+
+</resources>

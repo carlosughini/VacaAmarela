@@ -1,4 +1,4 @@
-package com.vacaamarela.carlos.vacaamarela
+package com.vacaamarela.carlos.vacaamarela.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.vacaamarela.carlos.vacaamarela.Butchery
+import com.vacaamarela.carlos.vacaamarela.R
 
 class EstabelecimentoAdapter(private val context: Context, private val dataSource: ArrayList<Butchery>) : BaseAdapter() {
 
@@ -18,18 +20,18 @@ class EstabelecimentoAdapter(private val context: Context, private val dataSourc
         var listItemView = convertView
         if (listItemView == null) {
             // Get view for row item
-            listItemView = inflater.inflate(R.layout.list_item, parent, false)
+            //listItemView = inflater.inflate(R.layout.butchery_list_item, parent, false)
         }
 
         val currentButchery = dataSource[position]
 
-        // Find the TextView in the list_item.xml layout with the ID butchery_name
-        val butcheryName = listItemView?.findViewById<TextView>(R.id.butchery_name)
+        // Find the TextView in the butchery_list_itemlist_item.xml layout with the ID butchery_name
+        //val butcheryName = listItemView?.findViewById<TextView>(R.id.butchery_name)
 
-        // Find the TextView in the list_item.xml layout with the ID butchery_name
+        // Find the TextView in the butchery_list_item.xml_item.xml layout with the ID butchery_name
         val distanceFromTheUser = listItemView?.findViewById<TextView>(R.id.distance)
 
-        butcheryName!!.text = currentButchery.mButcheryName
+        //butcheryName!!.text = currentButchery.mButcheryName
 
         distanceFromTheUser!!.text = currentButchery.mDistanceFromTheUser
 

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        card_view:cardPreventCornerOverlap="false"
+        app:cardCornerRadius="@dimen/card_view_corner_radius"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/casa_carne_nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                    android:layout_marginTop="@dimen/margin_top_list_item_acougues"
+                    android:textColor="@color/butchery_list_title"
+                    android:fontFamily="sans-serif-medium"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    tools:text="Nome do açougue" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        android:src="@drawable/list_tel_icon" />
+
+                    <TextView
+                        android:id="@+id/casa_carne_telefone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        android:gravity="center"
+                        android:textColor="@color/list_item_text_color"
+                        tools:text="51 3322-3040" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_list_item_acougues">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        android:src="@drawable/list_distance_icon" />
+
+                    <TextView
+                        android:id="@+id/distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        android:gravity="center"
+                        android:textColor="@color/list_item_text_color"
+                        tools:text="0.0 Km" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                    android:layout_marginTop="@dimen/margin_top_list_item_acougues"
+                    android:layout_marginBottom="@dimen/margin_bottom_list_item_acougues"
+                    android:background="@drawable/linear_layout_shape">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        android:src="@drawable/list_cupom_icon" />
+
+                    <TextView
+                        android:id="@+id/quantidade_cupons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_left_list_item_acougues"
+                        android:textColor="@color/list_item_text_color"
+                        tools:text="10 Cupons" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_list_item_logo"
+                    android:src="@drawable/logolista" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
