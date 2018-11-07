@@ -2,6 +2,8 @@ package com.vacaamarela.carlos.vacaamarela.ui.home
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.FragmentTransaction
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -18,12 +20,15 @@ import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.widget.Toast
 import com.vacaamarela.carlos.vacaamarela.R
+import com.vacaamarela.carlos.vacaamarela.model.Butchery
+import com.vacaamarela.carlos.vacaamarela.ui.adapter.ButchersRecyclerViewAdapter
 import com.vacaamarela.carlos.vacaamarela.ui.adapter.HomePagerAdapter
+import com.vacaamarela.carlos.vacaamarela.ui.detail.DetailFragment
 import com.vacaamarela.carlos.vacaamarela.ui.view.ButchersFragment
 import com.vacaamarela.carlos.vacaamarela.ui.view.CuponsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentListener {
 
     // Variable for Data Binding of home activity layout
     private lateinit var  mViewPager : ViewPager
@@ -40,6 +45,7 @@ class HomeActivity : AppCompatActivity() {
     private var hasNetwork = false
     private var locationGps: Location? = null
     private var locationNetwork: Location? = null
+    private lateinit var viewModel: ButchersViewModel
 
     companion object {
         private const val PERMISSION_REQUEST = 10
@@ -48,6 +54,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        viewModel = ViewModelProviders.of(this).get(ButchersViewModel::class.java)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkPermission(permissions)) {
@@ -98,6 +106,15 @@ class HomeActivity : AppCompatActivity() {
         mTabLayout.getTabAt(1)?.setIcon(R.drawable.tab_icon_cupons)?.setCustomView(R.layout.view_home_tab)
     }
 
+
+    override fun onRecyclerItemCliked(item: Butchery) {
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_tablayout, DetailFragment())
+                .addToBackStack(null)
+                .commit()
+    }
+
     @SuppressLint("MissingPermission")
     private fun getLocation() {
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -111,6 +128,8 @@ class HomeActivity : AppCompatActivity() {
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationGps = location
+                            viewModel.userLatitude = locationGps!!.latitude
+                            viewModel.userLatitude = locationGps!!.longitude
                             Log.d("CodeAndroidLocation", " GPS Latitude : " + locationGps!!.latitude)
                             Log.d("CodeAndroidLocation", " GPS Longitude : " + locationGps!!.longitude)
                         }
@@ -118,11 +137,10 @@ class HomeActivity : AppCompatActivity() {
 
                     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
 
-                        Log.d("CodeAndroidLocation", " GPS Latitude : " + locationGps!!.latitude)
-                        Log.d("CodeAndroidLocation", " GPS Longitude : " + locationGps!!.longitude)
                     }
 
                     override fun onProviderEnabled(provider: String?) {
+                        Log.d("CodeAndroidLocation", " ATIVOUUUUUUUUU")
 
                     }
 
@@ -142,18 +160,19 @@ class HomeActivity : AppCompatActivity() {
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationNetwork = location
+                            viewModel.userLatitude = locationNetwork!!.latitude
+                            viewModel.userLatitude = locationNetwork!!.longitude
                             Log.d("CodeAndroidLocation", " Network Latitude : " + locationNetwork!!.latitude)
                             Log.d("CodeAndroidLocation", " Network Longitude : " + locationNetwork!!.longitude)
                         }
                     }
 
                     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-                        Log.d("CodeAndroidLocation", " Network Latitude : " + locationNetwork!!.latitude)
-                        Log.d("CodeAndroidLocation", " Network Longitude : " + locationNetwork!!.longitude)
 
                     }
 
                     override fun onProviderEnabled(provider: String?) {
+                        Log.d("CodeAndroidLocation", " ATIVOUUUUUUUUU")
 
                     }
 
@@ -173,9 +192,13 @@ class HomeActivity : AppCompatActivity() {
 
                     Log.d("CodeAndroidLocation", " Network Latitude : " + locationNetwork!!.latitude)
                     Log.d("CodeAndroidLocation", " Network Longitude : " + locationNetwork!!.longitude)
+                    viewModel.userLatitude = locationNetwork!!.latitude
+                    viewModel.userLatitude = locationNetwork!!.longitude
                 }else{
                     Log.d("CodeAndroidLocation", " GPS Latitude : " + locationGps!!.latitude)
                     Log.d("CodeAndroidLocation", " GPS Longitude : " + locationGps!!.longitude)
+                    viewModel.userLatitude = locationGps!!.latitude
+                    viewModel.userLatitude = locationGps!!.longitude
                 }
             }
 

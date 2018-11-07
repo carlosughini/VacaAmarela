@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/ListaAcougues">
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -23,6 +23,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.home.HomeActivity"/>
+        <activity android:name=".ui.detail.ButcheryDetailActivity"
+            android:parentActivityName=".ui.home.HomeActivity"/>
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".ui.home.HomeActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

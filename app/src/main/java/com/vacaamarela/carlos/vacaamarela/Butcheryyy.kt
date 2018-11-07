@@ -3,30 +3,30 @@ package com.vacaamarela.carlos.vacaamarela
 import android.support.v7.app.AppCompatActivity
 import java.io.Serializable
 
-class Butchery : Serializable {
+class Butcheryyy : Serializable {
 
-    /** Butchery name */
+    /** Butcheryyy name */
     var mButcheryName: String? = null
 
-    /** Address of the butchery */
+    /** Address of the butcheryyy */
     var mButcheryAddress: String? = null
 
-    /** Butchery city */
+    /** Butcheryyy city */
     var mButcheryCity: String? = null
 
-    /** Distance of the butchery from the user */
+    /** Distance of the butcheryyy from the user */
     var mDistanceFromTheUser: String? = null
 
-    /** Butchery latitude */
+    /** Butcheryyy latitude */
     var mLatitude: String? = null
 
-    /** Butchery longitude */
+    /** Butcheryyy longitude */
     var mLongitude: String? = null
 
-    /** Butchery longitude */
+    /** Butcheryyy longitude */
     var mPhoneNumber: String? = null
 
-    /** Image resource ID for the butchery */
+    /** Image resource ID for the butcheryyy */
 //    var mButcheryLogoResourceId: Int,
 
     constructor(butcheryName: String, butcheryAddress: String, butcheryCity: String, latitude: String, longitude: String, phoneNumber: String) {

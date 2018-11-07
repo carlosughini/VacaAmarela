@@ -19,6 +19,7 @@ import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.ProgressBar
 import com.vacaamarela.carlos.vacaamarela.ui.adapter.EstabelecimentoAdapter
+import com.vacaamarela.carlos.vacaamarela.ui.detail.ButcheryDetailActivity
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -41,8 +42,8 @@ class MainActivity : AppCompatActivity() {
     /** URL for the butchers data from the google spreadsheet */
     private val SPREADSHEET_URL: String = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1yr5mwaIbA9puTIUfMnrfoKeovZ3rpuCpqIIqOsSZtEs"
 
-    /** Value to pass Butchery Object to ButcheryDetailActivity */
-    val BUTCHERY: String = "Butchery"
+    /** Value to pass Butcheryyy Object to ButcheryDetailActivity */
+    val BUTCHERY: String = "Butcheryyy"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Update the screen to display information from the given [Event].
      */
-    fun updateUi(butchers: ArrayList<Butchery>) {
+    fun updateUi(butchers: ArrayList<Butcheryyy>) {
         // Find the ListView object in the view hierarchy of the Activity.
         val listView: ListView = findViewById(R.id.listView)
 
@@ -85,13 +86,13 @@ class MainActivity : AppCompatActivity() {
 
         /**
          * Make the listView use the butcheryAdapter created above, so that the
-         * listView will display list items for each Butchery in the list
+         * listView will display list items for each Butcheryyy in the list
          */
         listView.adapter = butcheryAdapter
 
         listView.onItemClickListener = object : AdapterView.OnItemClickListener {
             override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val butcheryDetailActivity = Intent(applicationContext,ButcheryDetailActivity::class.java)
+                val butcheryDetailActivity = Intent(applicationContext, ButcheryDetailActivity::class.java)
                 butcheryDetailActivity.putExtra(BUTCHERY,butchers[position])
                 startActivity(butcheryDetailActivity)
             }
@@ -104,14 +105,14 @@ class MainActivity : AppCompatActivity() {
      * update the UI with the first earthquake in the response.
      */
     @SuppressLint("StaticFieldLeak")
-    private inner class ButcheryAsyncTask : AsyncTask<String, Int, ArrayList<Butchery>>() {
+    private inner class ButcheryAsyncTask : AsyncTask<String, Int, ArrayList<Butcheryyy>>() {
 
         override fun onPreExecute() {
             super.onPreExecute()
             progressBar?.visibility = View.VISIBLE
         }
 
-        override fun doInBackground(vararg urls: String): ArrayList<Butchery>? {
+        override fun doInBackground(vararg urls: String): ArrayList<Butcheryyy>? {
 
             // Do not execute the task if the URL is null
             if (urls[0].isEmpty()) {
@@ -139,7 +140,7 @@ class MainActivity : AppCompatActivity() {
          * Update the screen with the given earthquake (which was the result of the
          * [TsunamiAsyncTask]).
          */
-        override fun onPostExecute(butchers: ArrayList<Butchery>?) {
+        override fun onPostExecute(butchers: ArrayList<Butcheryyy>?) {
             // Set the progressbar invisible
             progressBar?.visibility = View.INVISIBLE
 
@@ -226,14 +227,14 @@ class MainActivity : AppCompatActivity() {
          * Return an [Event] object by parsing out information
          * about the first earthquake from the input earthquakeJSON string.
          */
-        private fun extractFeatureFromJson(responseJSON: String): ArrayList<Butchery>? {
+        private fun extractFeatureFromJson(responseJSON: String): ArrayList<Butcheryyy>? {
             // If the JSON string is empty or null, then return early.
             if (TextUtils.isEmpty(responseJSON)) {
                 return null
             }
 
             // Create a list of butchers
-            val butchersList = ArrayList<Butchery>()
+            val butchersList = ArrayList<Butcheryyy>()
 
             try {
                 val baseJsonResponse = JSONObject(responseJSON)
@@ -246,22 +247,22 @@ class MainActivity : AppCompatActivity() {
                     for (i in 0 until sheetArray.length()) {
                         // Extract out the jsonObjects in each position
                         val butchers = sheetArray.getJSONObject(i)
-                        // Extract out the butchery name
+                        // Extract out the butcheryyy name
                         val butcheryName = butchers.getString("Nome")
-                        // Extract out the butchery address
+                        // Extract out the butcheryyy address
                         val butcheryAddress = butchers.getString("Endereco")
-                        // Extract out the butchery city
+                        // Extract out the butcheryyy city
                         val butcheryCity = butchers.getString("Cidade")
-                        // Extract out the butchery latitude
+                        // Extract out the butcheryyy latitude
                         val butcheryLatitude = butchers.getString("Latitude")
-                        // Extract out the butchery longitude
+                        // Extract out the butcheryyy longitude
                         val butcheryLongitude = butchers.getString("Longitude")
-                        // Extract out the butchery phone number
+                        // Extract out the butcheryyy phone number
                         val butcheryPhoneNumber = butchers.getString("Telefone")
                         /**
-                         * Create a new {@link Butchery} object
+                         * Create a new {@link Butcheryyy} object
                          */
-                        butchersList.add(Butchery(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude, butcheryLongitude, butcheryPhoneNumber))
+                        butchersList.add(Butcheryyy(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude, butcheryLongitude, butcheryPhoneNumber))
                     }
                 }
             } catch (e: JSONException) {

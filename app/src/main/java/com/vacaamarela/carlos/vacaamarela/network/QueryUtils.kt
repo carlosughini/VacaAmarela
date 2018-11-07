@@ -2,7 +2,7 @@ package com.vacaamarela.carlos.vacaamarela.network
 
 import android.text.TextUtils
 import android.util.Log
-import com.vacaamarela.carlos.vacaamarela.model.Acougue
+import com.vacaamarela.carlos.vacaamarela.model.Butchery
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -19,7 +19,7 @@ object QueryUtils {
     /** Tag para mensagens de log  */
     private val TAG = QueryUtils::class.java.name
 
-    fun extractButchers(stringUrl: String) : MutableList<Acougue>? {
+    fun extractButchers(stringUrl: String) : MutableList<Butchery>? {
 
         val url: URL? = createUrl(stringUrl)
 
@@ -106,14 +106,14 @@ object QueryUtils {
      * Return an [Event] object by parsing out information
      * about the first earthquake from the input earthquakeJSON string.
      */
-    private fun extractFeatureFromJson(responseJSON: String): MutableList<Acougue>? {
+    private fun extractFeatureFromJson(responseJSON: String): MutableList<Butchery>? {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(responseJSON)) {
             return null
         }
 
         // Create a list of butchers
-        val butchersList = mutableListOf<Acougue>()
+        val butchersList = mutableListOf<Butchery>()
 
         try {
             val baseJsonResponse = JSONObject(responseJSON)
@@ -126,22 +126,22 @@ object QueryUtils {
                 for (i in 0 until sheetArray.length()) {
                     // Extract out the jsonObjects in each position
                     val butchers = sheetArray.getJSONObject(i)
-                    // Extract out the butchery name
+                    // Extract out the butcheryyy name
                     val butcheryName = butchers.getString("nome")
-                    // Extract out the butchery address
+                    // Extract out the butcheryyy address
                     val butcheryAddress = butchers.getString("endereco")
-                    // Extract out the butchery city
+                    // Extract out the butcheryyy city
                     val butcheryCity = butchers.getString("cidade")
-                    // Extract out the butchery latitude
+                    // Extract out the butcheryyy latitude
                     val butcheryLatitude = butchers.getString("lat")
-                    // Extract out the butchery longitude
+                    // Extract out the butcheryyy longitude
                     val butcheryLongitude = butchers.getString("long")
-                    // Extract out the butchery phone number
+                    // Extract out the butcheryyy phone number
                     val butcheryPhoneNumber = butchers.getString("telefone")
                     /**
-                     * Create a new {@link Butchery} object
+                     * Create a new {@link Butcheryyy} object
                      */
-                    butchersList.add(Acougue(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude, butcheryLongitude, butcheryPhoneNumber))
+                    butchersList.add(Butchery(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude, butcheryLongitude, butcheryPhoneNumber))
                 }
             }
         } catch (e: JSONException) {

@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.vacaamarela.carlos.vacaamarela.Butchery
+import com.vacaamarela.carlos.vacaamarela.Butcheryyy
 import com.vacaamarela.carlos.vacaamarela.R
 
-class EstabelecimentoAdapter(private val context: Context, private val dataSource: ArrayList<Butchery>) : BaseAdapter() {
+class EstabelecimentoAdapter(private val context: Context, private val dataSource: ArrayList<Butcheryyy>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

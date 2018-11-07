@@ -1,4 +1,4 @@
-package com.vacaamarela.carlos.vacaamarela
+package com.vacaamarela.carlos.vacaamarela.ui.splash
 
 import android.app.Activity
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Handler
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.view.Window
 import android.view.WindowManager
+import com.vacaamarela.carlos.vacaamarela.R
 import com.vacaamarela.carlos.vacaamarela.ui.home.HomeActivity
 
 class SplashActivity : Activity() {
