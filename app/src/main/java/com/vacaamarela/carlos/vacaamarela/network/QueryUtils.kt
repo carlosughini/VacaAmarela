@@ -1,5 +1,6 @@
 package com.vacaamarela.carlos.vacaamarela.network
 
+import android.location.Location
 import android.text.TextUtils
 import android.util.Log
 import com.vacaamarela.carlos.vacaamarela.model.Butchery
@@ -9,19 +10,29 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.math.RoundingMode
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 import java.nio.charset.Charset
+import java.text.DecimalFormat
+import kotlin.math.round
 
 object QueryUtils {
 
     /** Tag para mensagens de log  */
     private val TAG = QueryUtils::class.java.name
+    private lateinit var mUserLatitude: String
+    private lateinit var mUserLongitude: String
+    // Create a list of butchers
+    private var butchersList = mutableListOf<Butchery>()
 
-    fun extractButchers(stringUrl: String) : MutableList<Butchery>? {
+    fun extractButchers(stringUrl: String, latitude: String, longitude: String) : MutableList<Butchery>? {
 
         val url: URL? = createUrl(stringUrl)
+
+        mUserLatitude = latitude
+        mUserLongitude = longitude
 
         // Perform HTTP request to the URL and receive a JSON response back
         var jsonResponse = ""
@@ -107,13 +118,11 @@ object QueryUtils {
      * about the first earthquake from the input earthquakeJSON string.
      */
     private fun extractFeatureFromJson(responseJSON: String): MutableList<Butchery>? {
+
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(responseJSON)) {
             return null
         }
-
-        // Create a list of butchers
-        val butchersList = mutableListOf<Butchery>()
 
         try {
             val baseJsonResponse = JSONObject(responseJSON)
@@ -140,18 +149,61 @@ object QueryUtils {
                     val butcheryElevation = butchers.getString("elev")
                     // Extract out the butchery phone number
                     val butcheryPhoneNumber = butchers.getString("telefone")
+
+                    val resultsDistanceBetweenUserAndButchery: FloatArray = FloatArray(3)
                     /**
-                     * Create a new {@link Butchery} object
+                     * Calculate distance between two points in latitude and longitude.
+                     *
+                     * @return Distance in meters
                      */
-                    butchersList.add(Butchery(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude.toDouble(), butcheryLongitude.toDouble(), butcheryElevation.toDouble(), butcheryPhoneNumber))
+                    Location.distanceBetween(
+                            mUserLatitude.toDouble(),
+                            mUserLongitude.toDouble(),
+                            butcheryLatitude.toDouble(),
+                            butcheryLongitude.toDouble(),
+                            resultsDistanceBetweenUserAndButchery
+                    )
+                    // Instantiate a variable to store the distance in meters
+                    val resultDistance = resultsDistanceBetweenUserAndButchery[0]
+                    // Check if the distance is more than 10km to do not show to the user
+                    if (resultDistance < 10000.00) {
+                        val distanceInKm = formatDistance(resultsDistanceBetweenUserAndButchery[0])
+                        /**
+                         * Create a new {@link Butchery} object
+                         */
+                        butchersList.add(Butchery(butcheryName,
+                                butcheryAddress,
+                                butcheryCity,
+                                butcheryLatitude.toDouble(),
+                                butcheryLongitude.toDouble(),
+                                butcheryElevation.toDouble(),
+                                butcheryPhoneNumber,
+                                distanceInKm))
+
+                    }
                 }
             }
         } catch (e: JSONException) {
             Log.e("HttpRequest", "Problem parsing the earthquake JSON results", e)
         }
 
+        // Sort the list to show the nearest butchery
+        butchersList.sortBy { it.distanceFromUser }
+
         // Return the array list with butchers objects
         return butchersList
     }
 
+    /**
+     * Receive the distance in meters and format it
+     * to show in km.
+     *
+     * @param distanceDouble - Distance in meters
+     */
+    fun formatDistance(distanceDouble: Float) : String {
+        val distanceInMeters = round(distanceDouble)
+        val decimalFormat = DecimalFormat("#.##")
+        decimalFormat.roundingMode = RoundingMode.CEILING
+        return decimalFormat.format(distanceInMeters / 1000).toString().replace(",",".")
+    }
 }

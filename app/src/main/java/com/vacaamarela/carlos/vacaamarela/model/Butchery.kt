@@ -8,7 +8,8 @@ class Butchery(var name: String?,
                var latitude :  Double?,
                var longitude: Double?,
                var elevation: Double?,
-               var phoneNumber: String?) : Serializable {
+               var phoneNumber: String?,
+               var distanceFromUser: String?) : Serializable {
 
     /** Distance of the butcheryyy from the user */
     var mDistanceFromTheUser: String? = null

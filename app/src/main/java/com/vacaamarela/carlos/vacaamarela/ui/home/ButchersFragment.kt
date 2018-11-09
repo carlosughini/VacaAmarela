@@ -118,8 +118,11 @@ class ButchersFragment : Fragment(),
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<MutableList<Butchery>> {
+    //        butchersViewModel = activity?.run {
+    //            ViewModelProviders.of(this).get(ButchersViewModel::class.java)
+    //        } ?: throw Exception("InvalidActivity")
         progress_bar.visibility = View.VISIBLE
-        return AcouguesLoader(context, BASE_URL)
+        return AcouguesLoader(context, BASE_URL, butchersViewModel.userLatitude.value.toString(), butchersViewModel.userLongitude.value.toString())
     }
 
     override fun onLoadFinished(loader: Loader<MutableList<Butchery>>?, listaButcheries: MutableList<Butchery>?) {
