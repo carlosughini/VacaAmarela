@@ -79,24 +79,6 @@ class ButchersRecyclerViewAdapter (private var items: MutableList<Butchery>,
             itemView.casa_carne_nome.text = butchery.name
             itemView.casa_carne_telefone.text = butchery.phoneNumber
             itemView.quantidade_cupons.text = "10 Cupons"
-//            val resultsDistanceBetweenUserAndButchery: FloatArray = FloatArray(3)
-//
-//            Log.d("DISTANCE", "UserLat: $userLatitude UserLong: $userLongitude ButcheryLat: ${butchery.latitude} ButcheryLong: ${butchery.longitude}")
-//
-//            /**
-//             * Calculate distance between two points in latitude and longitude.
-//             *
-//             * @return Distance in meters
-//             */
-//            Location.distanceBetween(
-//                    userLatitude!!,
-//                    userLongitude!!,
-//                    butchery.latitude!!,
-//                    butchery.longitude!!,
-//                    resultsDistanceBetweenUserAndButchery
-//            )
-//            Log.d("DISTANCE", "Distance between is: ${resultsDistanceBetweenUserAndButchery[0]}")
-//            //val distanceInKm = formatDistance(resultsDistanceBetweenUserAndButchery[0])
             itemView.distance.text =  mContext.getString(R.string.km, butchery.distanceFromUser)
         }
 
@@ -134,19 +116,6 @@ class ButchersRecyclerViewAdapter (private var items: MutableList<Butchery>,
                 homeActivity.switchContent(id, fragment)
             }
 
-        }
-
-        /**
-         * Receive the distance in meters and format it
-         * to show in km.
-         *
-         * @param distanceDouble - Distance in meters
-         */
-        fun formatDistance(distanceDouble: Float) : String {
-            val distanceInMeters = round(distanceDouble)
-            val decimalFormat = DecimalFormat("#.##")
-            decimalFormat.roundingMode = RoundingMode.CEILING
-            return decimalFormat.format(distanceInMeters / 1000).toString()
         }
     }
 }

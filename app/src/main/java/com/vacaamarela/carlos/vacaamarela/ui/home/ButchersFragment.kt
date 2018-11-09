@@ -1,6 +1,5 @@
 package com.vacaamarela.carlos.vacaamarela.ui.view
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -13,7 +12,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.view.animation.LayoutAnimationController
 import com.vacaamarela.carlos.vacaamarela.R
 import com.vacaamarela.carlos.vacaamarela.model.Butchery
 import com.vacaamarela.carlos.vacaamarela.MainActivity
@@ -86,7 +84,6 @@ class ButchersFragment : Fragment(),
         recyclerView.layoutAnimation = controller
         recyclerView.adapter.notifyDataSetChanged()
         recyclerView.scheduleLayoutAnimation()
-
     }
 
     fun setupRecyclerView() {
@@ -104,7 +101,6 @@ class ButchersFragment : Fragment(),
         recycler_view.layoutManager = LinearLayoutManager(context)
         mAdapter = ButchersRecyclerViewAdapter(listaAcougues, butchersViewModel.userLatitude.value, butchersViewModel.userLongitude.value)
         recycler_view.adapter = mAdapter
-        Log.d("CodeAndroidLocation","AEEEEEEEEEEEEEEEEEEEEEEEEEE3 ")
     }
 
     override fun onStart() {
@@ -132,7 +128,6 @@ class ButchersFragment : Fragment(),
          * Se há uma lista válida de {@link Earthquake} então os adiciona ao data set do adapter.
          * Isto ativará a atualização da ListView.
          */
-        Log.d("CodeAndroidLocation","AEEEEEEEEEEEEEEEEEEEEEEEEEE2222 ")
         if (listaButcheries != null && !listaButcheries.isEmpty()) {
             val animationResourceId: Int = R.anim.layout_animation_fall_down
             val controller = AnimationUtils.loadLayoutAnimation(context, animationResourceId)
