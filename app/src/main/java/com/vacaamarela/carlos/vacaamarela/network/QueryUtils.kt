@@ -126,22 +126,24 @@ object QueryUtils {
                 for (i in 0 until sheetArray.length()) {
                     // Extract out the jsonObjects in each position
                     val butchers = sheetArray.getJSONObject(i)
-                    // Extract out the butcheryyy name
+                    // Extract out the butchery name
                     val butcheryName = butchers.getString("nome")
-                    // Extract out the butcheryyy address
+                    // Extract out the butchery address
                     val butcheryAddress = butchers.getString("endereco")
-                    // Extract out the butcheryyy city
+                    // Extract out the butchery city
                     val butcheryCity = butchers.getString("cidade")
-                    // Extract out the butcheryyy latitude
+                    // Extract out the butchery latitude
                     val butcheryLatitude = butchers.getString("lat")
-                    // Extract out the butcheryyy longitude
+                    // Extract out the butchery longitude
                     val butcheryLongitude = butchers.getString("long")
-                    // Extract out the butcheryyy phone number
+                    // Extract out the butchery elevation
+                    val butcheryElevation = butchers.getString("elev")
+                    // Extract out the butchery phone number
                     val butcheryPhoneNumber = butchers.getString("telefone")
                     /**
-                     * Create a new {@link Butcheryyy} object
+                     * Create a new {@link Butchery} object
                      */
-                    butchersList.add(Butchery(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude, butcheryLongitude, butcheryPhoneNumber))
+                    butchersList.add(Butchery(butcheryName, butcheryAddress, butcheryCity, butcheryLatitude.toDouble(), butcheryLongitude.toDouble(), butcheryElevation.toDouble(), butcheryPhoneNumber))
                 }
             }
         } catch (e: JSONException) {

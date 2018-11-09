@@ -2,7 +2,6 @@ package com.vacaamarela.carlos.vacaamarela.ui.home
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.FragmentTransaction
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
@@ -13,29 +12,25 @@ import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.widget.Toast
 import com.vacaamarela.carlos.vacaamarela.R
-import com.vacaamarela.carlos.vacaamarela.model.Butchery
-import com.vacaamarela.carlos.vacaamarela.ui.adapter.ButchersRecyclerViewAdapter
-import com.vacaamarela.carlos.vacaamarela.ui.adapter.HomePagerAdapter
-import com.vacaamarela.carlos.vacaamarela.ui.detail.DetailFragment
+import com.vacaamarela.carlos.vacaamarela.ui.home.adapter.HomePagerAdapter
 import com.vacaamarela.carlos.vacaamarela.ui.view.ButchersFragment
 import com.vacaamarela.carlos.vacaamarela.ui.view.CuponsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentListener {
+class HomeActivity : AppCompatActivity() {
 
     // Variable for Data Binding of home activity layout
-    private lateinit var  mViewPager : ViewPager
-    private lateinit var mTabLayout : TabLayout
+    //private lateinit var  mViewPager : ViewPager
+    //private lateinit var mTabLayout : TabLayout
     // Create one adapter to know which fragment should show on each page
-    private val mHomeAdapter: HomePagerAdapter = HomePagerAdapter(supportFragmentManager)
-    lateinit var mToolbar : Toolbar
+    private val homeAdapter: HomePagerAdapter = HomePagerAdapter(supportFragmentManager)
+    //lateinit var mToolbar : Toolbar
     private val TITLE_TAB_CASAS_DE_CARNES = "Casas de Carnes"
     private val TITLE_TAB_CUPONS = "Cupons"
     private var listFragmentTitles = listOf(TITLE_TAB_CASAS_DE_CARNES,TITLE_TAB_CUPONS)
@@ -55,6 +50,8 @@ class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentLis
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        // Create a ViewModel the first time the system calls an activity's onCreate() method.
+        // Re-created activities receive the same MyViewModel instance created by the first activity
         viewModel = ViewModelProviders.of(this).get(ButchersViewModel::class.java)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -66,24 +63,21 @@ class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentLis
             }
         }
 
-        // Set the viewpager
-        mViewPager = main_viewpager
-        // Set tablayout
-        mTabLayout = main_tablayout
-        // Set the toolbar
-        mToolbar = home_toolbar
-        setSupportActionBar(mToolbar)
-
+        // Set the support action bar
+        setSupportActionBar(home_toolbar)
 
         // Add fragments to the ViewPager
-        mHomeAdapter.addFragment(ButchersFragment())
-        mHomeAdapter.addFragment(CuponsFragment())
-        // Set the viewpager adapter
-        mViewPager.adapter = mHomeAdapter
-        // Set the tablayout with the viewpager
-        mTabLayout.setupWithViewPager(mViewPager)
+        homeAdapter.addFragment(ButchersFragment())
+        homeAdapter.addFragment(CuponsFragment())
 
-        mViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        // Set the viewpager adapter
+        main_viewpager.adapter = homeAdapter
+
+        // Set the tablayout with the viewpager
+        main_tablayout.setupWithViewPager(main_viewpager)
+
+        // Change the toolbar title according to the tab
+        main_viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }
 
@@ -91,10 +85,11 @@ class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentLis
             }
 
             override fun onPageSelected(position: Int) {
-                mToolbar.title = listFragmentTitles[position]
+                home_toolbar.title = listFragmentTitles[position]
             }
         })
 
+        // Define the icons for the tab layout
         setupTabLayoutIcons()
     }
 
@@ -102,17 +97,15 @@ class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentLis
      * Set the TabLayout icons drawable and view.
      */
     private fun setupTabLayoutIcons() {
-        mTabLayout.getTabAt(0)?.setIcon(R.drawable.tab_icon_acougues)?.setCustomView(R.layout.view_home_tab)
-        mTabLayout.getTabAt(1)?.setIcon(R.drawable.tab_icon_cupons)?.setCustomView(R.layout.view_home_tab)
+        main_tablayout.getTabAt(0)?.setIcon(R.drawable.tab_icon_acougues)?.setCustomView(R.layout.view_home_tab)
+        main_tablayout.getTabAt(1)?.setIcon(R.drawable.tab_icon_cupons)?.setCustomView(R.layout.view_home_tab)
     }
 
-
-    override fun onRecyclerItemCliked(item: Butchery) {
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_tablayout, DetailFragment())
-                .addToBackStack(null)
-                .commit()
+    fun switchContent(id: Int, fragment: Fragment) {
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(id, fragment, fragment.toString())
+        ft.addToBackStack(null)
+        ft.commit()
     }
 
     @SuppressLint("MissingPermission")
@@ -128,10 +121,10 @@ class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentLis
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationGps = location
-                            viewModel.userLatitude = locationGps!!.latitude
-                            viewModel.userLatitude = locationGps!!.longitude
                             Log.d("CodeAndroidLocation", " GPS Latitude : " + locationGps!!.latitude)
                             Log.d("CodeAndroidLocation", " GPS Longitude : " + locationGps!!.longitude)
+                            viewModel.updateUserGeoLocation(locationGps!!.latitude, locationGps!!.longitude)
+                            Log.d("CodeAndroidLocation","User latitude: ${viewModel.userLatitude.value} longitude: ${viewModel.userLongitude.value}")
                         }
                     }
 
@@ -160,10 +153,12 @@ class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentLis
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationNetwork = location
-                            viewModel.userLatitude = locationNetwork!!.latitude
-                            viewModel.userLatitude = locationNetwork!!.longitude
+                            viewModel.userLatitude.value = locationNetwork!!.latitude
+                            viewModel.userLatitude.value = locationNetwork!!.longitude
                             Log.d("CodeAndroidLocation", " Network Latitude : " + locationNetwork!!.latitude)
                             Log.d("CodeAndroidLocation", " Network Longitude : " + locationNetwork!!.longitude)
+                            viewModel.updateUserGeoLocation(locationNetwork!!.latitude, locationNetwork!!.longitude)
+                            Log.d("CodeAndroidLocation","User latitude: ${viewModel.userLatitude.value} longitude: ${viewModel.userLongitude.value}")
                         }
                     }
 
@@ -192,13 +187,11 @@ class HomeActivity : AppCompatActivity(), ButchersRecyclerViewAdapter.contentLis
 
                     Log.d("CodeAndroidLocation", " Network Latitude : " + locationNetwork!!.latitude)
                     Log.d("CodeAndroidLocation", " Network Longitude : " + locationNetwork!!.longitude)
-                    viewModel.userLatitude = locationNetwork!!.latitude
-                    viewModel.userLatitude = locationNetwork!!.longitude
+                    viewModel.updateUserGeoLocation(locationGps!!.latitude, locationGps!!.longitude)
                 }else{
                     Log.d("CodeAndroidLocation", " GPS Latitude : " + locationGps!!.latitude)
                     Log.d("CodeAndroidLocation", " GPS Longitude : " + locationGps!!.longitude)
-                    viewModel.userLatitude = locationGps!!.latitude
-                    viewModel.userLatitude = locationGps!!.longitude
+                    viewModel.updateUserGeoLocation(locationGps!!.latitude, locationGps!!.longitude)
                 }
             }
 

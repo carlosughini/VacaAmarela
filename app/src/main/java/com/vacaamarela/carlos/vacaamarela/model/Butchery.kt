@@ -1,11 +1,14 @@
 package com.vacaamarela.carlos.vacaamarela.model
 
-class Butchery(var butcheryName: String?,
-               var butcheryAddress: String?,
-               var butcheryCity: String?,
-               var butcheryLatitude :  String?,
-               var butcheryLongitude: String?,
-               var butcheryPhoneNumber: String?) {
+import java.io.Serializable
+
+class Butchery(var name: String?,
+               var address: String?,
+               var city: String?,
+               var latitude :  Double?,
+               var longitude: Double?,
+               var elevation: Double?,
+               var phoneNumber: String?) : Serializable {
 
     /** Distance of the butcheryyy from the user */
     var mDistanceFromTheUser: String? = null

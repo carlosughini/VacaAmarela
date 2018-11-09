@@ -3,49 +3,49 @@ package com.vacaamarela.carlos.vacaamarela.ui.detail
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.TabLayout
 import android.support.v4.app.NavUtils
-import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.MenuItem
-import com.vacaamarela.carlos.vacaamarela.Butcheryyy
-import com.vacaamarela.carlos.vacaamarela.MainActivity
 import com.vacaamarela.carlos.vacaamarela.R
-import com.vacaamarela.carlos.vacaamarela.ui.home.ButchersViewModel
+import com.vacaamarela.carlos.vacaamarela.model.Butchery
+import com.vacaamarela.carlos.vacaamarela.ui.detail.adapter.DetailPagerAdapter
 import kotlinx.android.synthetic.main.activity_butchery_detail.*
 
 class ButcheryDetailActivity : AppCompatActivity() {
 
-    private var butchersViewModel = ButchersViewModel()
-    /** Tag for the log messages  */
+    private lateinit var butcheryViewModel: ButcheryViewModel
+    // Tag for the log messages
     private val TAG = ButcheryDetailActivity::class.java.simpleName
+    // Create one adapter to know which fragment should show on each page
+    private val detailPagerAdapter: DetailPagerAdapter = DetailPagerAdapter(supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_butchery_detail)
 
-        // Get the butcheryyy object passed by intent extras
+        // Create a ViewModel the first time the system calls an activity's onCreate() method.
+        // Re-created activities receive the same MyViewModel instance created by the first activity
+        butcheryViewModel = ViewModelProviders.of(this).get(ButcheryViewModel::class.java)
 
-        Log.d(TAG,"Butchery name: ${butchersViewModel.butchery?.butcheryName} latitude: ${butchersViewModel.userLatitude} e longitude: ${butchersViewModel.userLongitude}")
-        //val butchery = intent.extras.get("Butcheryyy") as Butcheryyy
+        // Get the butchery object passed by intent extras
+        val butchery = intent?.extras?.getSerializable("a") as? Butchery
+
+        Log.d(TAG,"Butchery name: ${butchery?.name} latitude: ${butchery?.latitude} e longitude: ${butchery?.longitude}")
 
         // Get a support ActionBar corresponding to this toolbar and enable the Up button
         actionBar?.setDisplayHomeAsUpEnabled(true)
         // Change actionBar title
-        actionBar?.title = butchersViewModel.butchery?.butcheryName
+        actionBar?.title = butchery?.name
 
-        // Create one adapter to know which fragment should show on each page
-        //val butcheryAdapter: ButcheryPagerAdapter = ButcheryPagerAdapter(this,supportFragmentManager);
+        // Add fragments to the ViewPager
+        detailPagerAdapter.addFragment(DescriptionFragment())
+        detailPagerAdapter.addFragment(RegulationFragment())
 
-        // Set adapter on view pager
-        //viewPager.adapter = butcheryAdapter
+        // Set the ViewPager adapter
+        butchery_viewPager.adapter = detailPagerAdapter
 
-        // Give to the TabLayout the ViewPager
-        val tabLayout = findViewById<TabLayout>(R.id.butchery_tabLayout)
-
-        // Set up the TabLayout with the viewPager
-        tabLayout.setupWithViewPager(butchery_viewPager)
-
+        // Set the tablayout with the ViewPager
+        butchery_tabLayout.setupWithViewPager(butchery_viewPager)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

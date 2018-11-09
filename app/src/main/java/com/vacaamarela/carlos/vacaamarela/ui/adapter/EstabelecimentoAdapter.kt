@@ -26,12 +26,12 @@ class EstabelecimentoAdapter(private val context: Context, private val dataSourc
         val currentButchery = dataSource[position]
 
         // Find the TextView in the butchery_list_itemlist_item.xml layout with the ID butchery_name
-        //val butcheryName = listItemView?.findViewById<TextView>(R.id.butchery_name)
+        //val name = listItemView?.findViewById<TextView>(R.id.butchery_name)
 
         // Find the TextView in the butchery_list_item.xml_item.xml layout with the ID butchery_name
         val distanceFromTheUser = listItemView?.findViewById<TextView>(R.id.distance)
 
-        //butcheryName!!.text = currentButchery.mButcheryName
+        //name!!.text = currentButchery.mButcheryName
 
         distanceFromTheUser!!.text = currentButchery.mDistanceFromTheUser
 

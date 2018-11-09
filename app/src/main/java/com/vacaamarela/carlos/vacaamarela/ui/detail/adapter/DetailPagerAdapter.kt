@@ -1,18 +1,18 @@
-package com.vacaamarela.carlos.vacaamarela.ui.adapter
+package com.vacaamarela.carlos.vacaamarela.ui.detail.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 
-class HomePagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class DetailPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    // Create a list to store fragments to show on HomeActivity
+    // Create a list to store fragments to show on ButcheryDetailActivity
     private var listOfFragments = arrayListOf<Fragment>()
 
     /**
      * Return the Fragment associated with a specified position.
      */
-    override fun getItem(position: Int): Fragment? {
+    override fun getItem(position: Int): Fragment {
         return listOfFragments[position]
     }
 
@@ -29,7 +29,4 @@ class HomePagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     fun addFragment(fragment: Fragment) {
         listOfFragments.add(fragment)
     }
-
-
-
 }

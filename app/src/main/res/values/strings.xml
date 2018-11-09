@@ -2,4 +2,5 @@
     <string name="tab_casas_de_carnes">Casas de Carnes</string>
     <string name="tab_cupons">Cupons</string>
     <string name="acougues_nao_localizados">Desculpe, não localizamos nenhum açougue perto de você.</string>
+    <string name="km">%1$s Km</string>
 </resources>
