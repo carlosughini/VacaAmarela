@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "415565658984",
+    "firebase_url": "https://vaca-amarela-e9c64.firebaseio.com",
+    "project_id": "vaca-amarela-e9c64",
+    "storage_bucket": "vaca-amarela-e9c64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415565658984:android:bb25d3aa6e8bfd69",
+        "android_client_info": {
+          "package_name": "com.vacaamarela.carlos.vacaamarela"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415565658984-9vaafk7mfsf1dvob9s8273vogtb7i3qm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vacaamarela.carlos.vacaamarela",
+            "certificate_hash": "420b96ee2d5e1b1b8529d87c13f56565c94b4699"
+          }
+        },
+        {
+          "client_id": "415565658984-rgvog78cf87j8bc3p4jlm6l64r25kie3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYIIiURoKK_OlS_fpBTakpD8vuR3cBZ8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415565658984-rgvog78cf87j8bc3p4jlm6l64r25kie3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

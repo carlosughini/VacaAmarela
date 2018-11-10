@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view_outer"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
-    android:orientation="vertical">
+    android:layout_height="@dimen/card_view_height"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/card_view_margin"
+    app:cardCornerRadius="@dimen/card_view_corner_radius"
+    card_view:cardBackgroundColor="@android:color/transparent"
+    card_view:cardElevation="@dimen/card_view_elevation">
 
     <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/card_view_layout_margin"
-        app:cardCornerRadius="@dimen/card_view_corner_radius"
-        app:cardElevation="@dimen/card_view_elevation">
+        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +31,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:orientation="vertical">
 
@@ -33,15 +41,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_left_list_item_acougues"
                     android:layout_marginTop="@dimen/margin_top_list_item_acougues"
-                    android:textColor="@color/butchery_list_title"
                     android:fontFamily="sans-serif-medium"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:textColor="@color/butchery_list_title"
                     tools:text="Nome do açougue" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_list_item_itens">
 
                     <ImageView
                         android:layout_width="16dp"
@@ -65,7 +74,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_top_list_item_acougues">
+                    android:layout_marginTop="@dimen/margin_top_list_item_itens">
 
                     <ImageView
                         android:layout_width="16dp"
@@ -85,12 +94,28 @@
 
                 </LinearLayout>
 
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="@dimen/margin_left_list_item_acougues"-->
+                    <!--android:layout_marginTop="@dimen/margin_top_list_item_acougues">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:textColor="@color/list_item_text_color"-->
+                        <!--android:text="Fecha às 19 horas"-->
+                        <!--tools:text="Fecha às 20 horas"/>-->
+
+
+                <!--</LinearLayout>-->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_left_list_item_acougues"
-                    android:layout_marginTop="@dimen/margin_top_list_item_acougues"
-                    android:layout_marginBottom="@dimen/margin_bottom_list_item_acougues"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/linear_layout_shape">
 
                     <ImageView
@@ -115,6 +140,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_top_list_item_acougues"
+                android:layout_marginEnd="@dimen/margin_right_image_list_item_acougues"
+                android:layout_marginBottom="16dp"
                 android:layout_weight="0.5"
                 android:orientation="vertical">
 
@@ -122,7 +150,6 @@
                     android:id="@+id/logo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/margin_list_item_logo"
                     android:src="@drawable/logolista" />
 
             </LinearLayout>
@@ -131,4 +158,6 @@
 
     </android.support.v7.widget.CardView>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>
+
+

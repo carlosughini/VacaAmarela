@@ -59,6 +59,9 @@ class ButchersFragment : Fragment(),
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        // Set the action bar title
+        activity.title = getString(R.string.tab_casas_de_carnes)
+
         // Create a ViewModel the first time the system calls an activity's onCreate() method.
         // Re-created activities receive the same MyViewModel instance created by the first activity
         //butchersViewModel = ViewModelProviders.of(this).get(ButchersViewModel::class.java)
